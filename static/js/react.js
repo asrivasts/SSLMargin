@@ -35,10 +35,16 @@ function marginCalc(){
         var s = document.getElementById("shicost").value;
         var c = document.getElementById("custcost").value;
         var marg = 0
+        var marg_dol =0
         s = parseFloat(s.replace(/,/g,''));
         c = parseFloat(c.replace(/,/g,''));
+        marg_dol = c-s
+        marg_dol = marg_dol.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD',
+        });
         marg = 100*(c-s)/c;
-        m.innerHTML="<h1>SSL Margin: " + parseFloat(marg).toFixed(2) + "%</h1>"
+        m.innerHTML="<h2>SSL Margin: " + parseFloat(marg).toFixed(2) + "%</h2>" +"<h2>SSL Margin: " + marg_dol + "</h2>"
         // (shi)/(1-%) = cust
         // shi = cust - % * cust
         // % * cust = cust - shi
